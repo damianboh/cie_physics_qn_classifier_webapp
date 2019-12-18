@@ -26,7 +26,7 @@ from werkzeug import secure_filename
 app = Flask(__name__, template_folder='templates')
 
 # This is the path to the upload directory
-app.config['UPLOAD_FOLDER'] = 'uploads/'
+app.config['UPLOAD_FOLDER'] = 'tmp/'
 # These are the extension that we are accepting to be uploaded
 app.config['ALLOWED_EXTENSIONS'] = set(['pdf'])
 
