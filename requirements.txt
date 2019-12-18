@@ -1,7 +1,6 @@
 flask
 gunicorn
 PyPDF2
-pickle
 pandas
 sklearn
 lxml
