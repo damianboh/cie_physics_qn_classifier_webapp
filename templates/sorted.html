@@ -7,22 +7,21 @@
   <body>
     <div class="container">
       <div class="header">
-        <h3 class="text-muted">Uploaded files</h3>
+        <h3 class="text-muted">Sorted Files</h3>
       </div>
       <hr/>
       <div>
-      List of files uploaded:
+	  <h4 class="text-muted">Download folder with sorted questions: <a href="{{url_for('sorted_file', filename=sorted_output)}}">sorted_output.zip</a></h4>
+	  <hr/>
+	  <h4 class="text-muted">Download report (excel file): <a href="{{url_for('sorted_file', filename=report_output)}}">report.xlsx</a></h4>
+	  <hr/>
+       <h5 class="text-muted">List of uploaded raw files:</h5>
       <ul>
         {% for file in filenames %}
-          <!--<li><a href="{{url_for('uploaded_file', filename=file)}}">{{file}}</a></li>-->
-		  <li>{{file}}</li>
+          <li><a href="{{url_for('uploaded_file', filename=file)}}">{{file}}</a></li>
+		  <!--<li>{{file}}</li>-->
         {% endfor %}
       </ul>
-      </div>
-      <div class="header">
-        <h3 class="text-muted">Sorted Topics</h3>
-		Download folder with sorted questions: <a href="{{url_for('sorted_file', filename=sorted_output)}}">sorted_output.zip</a>
-		
       </div>
       <hr/>    
 
