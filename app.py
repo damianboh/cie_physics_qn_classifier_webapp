@@ -342,7 +342,7 @@ def upload():
         #template.render(filenames=[file])
     remove_temp(output_folder)
     zip_folder(output_folder)
-    df_all_predicted.to_excel('tmp/report.xlsx')
+    df_all_predicted.to_csv('tmp/report.csv')
     
     # Load an html page with a link to each uploaded file
     return render_template('sorted.html', filenames=filenames, sorted_output = "sorted_output.zip", report_output = "report.xlsx")	
