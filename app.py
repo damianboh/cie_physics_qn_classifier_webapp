@@ -322,7 +322,7 @@ def upload():
     
     filenames.reverse()
     
-    # for testing and debugging
+    '''# for testing and debugging
     #html_string = pdf_to_html('D:/CIE_Machine_Learning/data/9702_backup_new_renamed/2007_11Nov_P2_9702_ms.pdf')
     html_string = pdf_to_html('tmp/' + filenames[0])
     pages_text = get_pages(html_string)
@@ -330,7 +330,7 @@ def upload():
     question_text_notags = get_question_texts(question_numbers_corrected, html_string)
     #question_numbers_corrected[10]
     #get_question_marks(question_text_notags[0])
-    get_pages_of_questions(pages_text, question_numbers_corrected, html_string)
+    get_pages_of_questions(pages_text, question_numbers_corrected, html_string)'''
     
     for file in filenames:
         file = 'tmp/' + file
@@ -342,7 +342,7 @@ def upload():
     zip_folder(output_folder)
         		
     # Load an html page with a link to each uploaded file
-    return render_template('sorted.html', filenames=filenames, sorted_output = "tmp/sorted_output.zip")	
+    return render_template('sorted.html', filenames=filenames, sorted_output = "sorted_output.zip")	
     	
 
 # This route is expecting a parameter containing the name
