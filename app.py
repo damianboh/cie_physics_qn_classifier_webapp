@@ -321,6 +321,17 @@ def upload():
     df_all_predicted = pd.DataFrame()
     
     filenames.reverse()
+    
+    # for testing and debugging
+    #html_string = pdf_to_html('D:/CIE_Machine_Learning/data/9702_backup_new_renamed/2007_11Nov_P2_9702_ms.pdf')
+    html_string = pdf_to_html('tmp/' + filenames[0])
+    pages_text = get_pages(html_string)
+    question_numbers_corrected = find_question_in_html(html_string)
+    question_text_notags = get_question_texts(question_numbers_corrected, html_string)
+    #question_numbers_corrected[10]
+    #get_question_marks(question_text_notags[0])
+    get_pages_of_questions(pages_text, question_numbers_corrected, html_string)
+    
     for file in filenames:
         file = 'tmp/' + file
         df = predict_by_question(file, output_folder)
@@ -329,7 +340,7 @@ def upload():
         #template.render(filenames=[file])
     remove_temp(output_folder)
     zip_folder(output_folder)
-    		
+        		
     # Load an html page with a link to each uploaded file
     return render_template('sorted.html', filenames=filenames, sorted_output = "tmp/sorted_output.zip")	
     	
