@@ -4,6 +4,6 @@ PyPDF2
 pandas
 scikit-learn==0.20.0
 lxml
-pdfminer
+pdfminer.six
 jinja2
 werkzeug
