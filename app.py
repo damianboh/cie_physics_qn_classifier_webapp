@@ -30,6 +30,9 @@ app.config['UPLOAD_FOLDER'] = 'tmp/'
 # These are the extension that we are accepting to be uploaded
 app.config['ALLOWED_EXTENSIONS'] = set(['pdf'])
 
+output_folder = "tmp/sorted_output"
+
+
 env = Environment(
     loader=FileSystemLoader('templates'),
     autoescape=select_autoescape(['html', 'xml'])
@@ -274,7 +277,7 @@ def remove_temp(output_folder):
 
 def zip_folder(output_folder):
     print("Zipping sorted files.")
-    with ZipFile('sorted_output.zip', 'w') as zipObj:
+    with ZipFile('tmp/sorted_output.zip', 'w') as zipObj:
        # Iterate over all the files in directory
        for folderName, subfolders, filenames in os.walk(output_folder):
            for filename in filenames:
@@ -316,7 +319,7 @@ def upload():
             # Redirect the user to the uploaded_file route, which
             # will basicaly show on the browser the uploaded file
     df_all_predicted = pd.DataFrame()
-    output_folder = "sorted_output"
+    
     filenames.reverse()
     for file in filenames:
         file = 'tmp/' + file
@@ -328,7 +331,7 @@ def upload():
     zip_folder(output_folder)
     		
     # Load an html page with a link to each uploaded file
-    return render_template('sorted.html', filenames=filenames, sorted_output = "sorted_output.zip")	
+    return render_template('sorted.html', filenames=filenames, sorted_output = "tmp/sorted_output.zip")	
     	
 
 # This route is expecting a parameter containing the name
@@ -342,7 +345,8 @@ def uploaded_file(filename):
 
 @app.route('/sorted_output/<filename>')
 def sorted_file(filename):
-    return send_file(filename)
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
 
 if __name__ == '__main__':
     app.run(
