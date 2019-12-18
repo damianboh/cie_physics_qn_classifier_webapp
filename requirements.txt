@@ -5,6 +5,5 @@ pandas
 sklearn
 lxml
 pdfminer
-glob
 jinja2
 werkzeug
