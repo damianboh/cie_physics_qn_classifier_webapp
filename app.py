@@ -345,7 +345,7 @@ def upload():
     df_all_predicted.to_csv('tmp/report.csv')
     
     # Load an html page with a link to each uploaded file
-    return render_template('sorted.html', filenames=filenames, sorted_output = "sorted_output.zip", report_output = "report.xlsx")	
+    return render_template('sorted.html', filenames=filenames, sorted_output = "sorted_output.zip", report_output = "report.csv")	
     	
 
 # This route is expecting a parameter containing the name
