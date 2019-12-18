@@ -338,12 +338,12 @@ def upload():
 # of a file. Then it will locate that file on the upload
 # directory and show it on the browser, so if the user uploads
 # an image, that image is going to be show after the upload
-@app.route('/uploads/<filename>')
+@app.route('/tmp/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
 
-@app.route('/sorted_output/<filename>')
+@app.route('/tmp/<filename>')
 def sorted_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
