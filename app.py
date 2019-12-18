@@ -303,6 +303,8 @@ def index():
 # Route that will process the file upload
 @app.route('/upload', methods=['POST'])
 def upload():
+    if not os.path.exists('tmp'):
+        os.makedirs('tmp')
     # Get the name of the uploaded files
     uploaded_files = request.files.getlist("file[]")
     filenames = []
