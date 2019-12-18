@@ -319,7 +319,7 @@ def upload():
     output_folder = "sorted_output"
     filenames.reverse()
     for file in filenames:
-        file = 'uploads/' + file
+        file = 'tmp/' + file
         df = predict_by_question(file, output_folder)
         df_all_predicted = pd.concat([df_all_predicted, df])
         
