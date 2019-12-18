@@ -1,0 +1,12 @@
+flask
+gunicorn
+PyPDF2
+pickle
+pandas
+sklearn
+lxml
+pdfminer
+re
+glob
+jinja2
+werkzeug
