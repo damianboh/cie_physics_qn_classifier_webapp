@@ -19,7 +19,7 @@ import re
 import glob
 from zipfile import ZipFile
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-from flask import Flask, render_template, request, redirect, url_for, send_from_directory, send_file
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory, send_file, Response, make_response, stream_with_context
 from werkzeug import secure_filename
 
 # Initialize the Flask application
@@ -299,15 +299,18 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
+render_next = False
+filenames = []
 
 # Route that will process the file upload
 @app.route('/upload', methods=['POST'])
-def upload():
+def upload():   
     if not os.path.exists('tmp'):
         os.makedirs('tmp')
     # Get the name of the uploaded files
     uploaded_files = request.files.getlist("file[]")
-    filenames = []
+    global filenames
+    filenames=[]
     for file in uploaded_files:
         # Check if the file is one of the allowed types/extensions
         if file and allowed_file(file.filename):
@@ -320,7 +323,7 @@ def upload():
             filenames.append(filename)
             # Redirect the user to the uploaded_file route, which
             # will basicaly show on the browser the uploaded file
-    df_all_predicted = pd.DataFrame()
+    
     
     filenames.reverse()
     
@@ -333,20 +336,60 @@ def upload():
     #question_numbers_corrected[10]
     #get_question_marks(question_text_notags[0])
     get_pages_of_questions(pages_text, question_numbers_corrected, html_string)'''
-    
-    for file in filenames:
-        file = 'tmp/' + file
-        df = predict_by_question(file, output_folder)
-        df_all_predicted = pd.concat([df_all_predicted, df])
+
+    def generate():
+        count = 0
+        x = 0
+        df_all_predicted = pd.DataFrame()
+        for file in filenames:
+            count+=1
+            file = 'tmp/' + file            
+            df_temp = predict_by_question(file, output_folder)
+            df = pd.DataFrame()
+            df = pd.concat([df, df_temp])
+            df_html = df.to_html()
+            df_all_predicted = pd.concat([df_all_predicted, df])
+            x = count/len(filenames)*100
+            x = int(x)
+            if count==len(filenames):
+                global render_next
+                render_next = True
+                remove_temp(output_folder)
+                zip_folder(output_folder)
+                df_all_predicted.to_csv('tmp/report.csv')
+                yield '<script>document.location.href="sorted"</script>'
+                #with app.app_context():
+                    #yield render_template('sorted.html', filenames=filenames, sorted_output = "sorted_output.zip", report_output = "report.csv")    	
+                    #headers = {'Content-Type': 'text/html'}
+                    #yield make_response(render_template('index.html'), 200, headers)    	
+           
+            else:
+                #yield render_template('index.html')
+                yield "Progress:" + str(x) + '% <br>' + df_html + "<br><br>"
+               # yield "data:" + str(x) + "\n\n"
         
-        #template.render(filenames=[file])
-    remove_temp(output_folder)
-    zip_folder(output_folder)
-    df_all_predicted.to_csv('tmp/report.csv')
-    
-    # Load an html page with a link to each uploaded file
-    return render_template('sorted.html', filenames=filenames, sorted_output = "sorted_output.zip", report_output = "report.csv")	
-    	
+        
+        #if render_next == True: 
+        # Load an html page
+        
+            
+    return Response(stream_with_context(generate()), mimetype= 'text/html')
+
+@app.route('/sorted')
+def sorted():
+    return render_template('sorted.html', filenames=filenames, sorted_output = "sorted_output.zip", report_output = "report.csv")   
+
+
+def stream_template(template_name, **context):
+    app.update_template_context(context)
+    t = app.jinja_env.get_template(template_name)
+    rv = t.stream(context)
+    rv.disable_buffering()
+    return rv
+#@app.route('/progress')
+#def progress():
+	
+
 
 # This route is expecting a parameter containing the name
 # of a file. Then it will locate that file on the upload
