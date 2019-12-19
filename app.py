@@ -22,6 +22,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, send_file, Response, make_response, stream_with_context
 from werkzeug import secure_filename
 import time
+import shutil
 
 # Initialize the Flask application
 app = Flask(__name__, template_folder='templates')
@@ -280,14 +281,18 @@ def remove_temp(output_folder):
 
 def zip_folder(output_folder):
     print("Zipping sorted files.")
-    with ZipFile('tmp/sorted_output.zip', 'w') as zipObj:
+    filepath = 'tmp/sorted_output.zip'
+    if os.path.exists(filepath):
+        os.remove(filepath)        
+    with ZipFile(filepath, 'w') as zipObj:
        # Iterate over all the files in directory
        for folderName, subfolders, filenames in os.walk(output_folder):
            for filename in filenames:
                #create complete filepath of file in directory
-               filePath = os.path.join(folderName, filename)
+               filePath = os.path.join(folderName, filename)       
                # Add file to zip
                zipObj.write(filePath)
+               
     print("Files are zipped.")
                
 # For a given file, return whether it's an allowed type or not
@@ -308,6 +313,8 @@ filenames = []
 # Route that will process the file upload
 @app.route('/upload', methods=['POST'])
 def upload():   
+    if os.path.exists('tmp'):
+        shutil.rmtree('tmp')
     if not os.path.exists('tmp'):
         os.makedirs('tmp')
     # Get the name of the uploaded files
