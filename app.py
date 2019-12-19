@@ -369,7 +369,7 @@ def upload():
             else:
                 #yield render_template('index.html')
                 #yield "Progress:" + str(x) + '% <br>' + df_html + "<br><br>"
-                yield "Progress:" + str(x) + '% <br><br>"
+                yield "Progress:" + str(x) + "%: Working on " + file + "<br><br>"
                # yield "data:" + str(x) + "\n\n"
         
         
