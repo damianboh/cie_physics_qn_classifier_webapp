@@ -21,6 +21,7 @@ from zipfile import ZipFile
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, send_file, Response, make_response, stream_with_context
 from werkzeug import secure_filename
+import time
 
 # Initialize the Flask application
 app = Flask(__name__, template_folder='templates')
@@ -357,6 +358,8 @@ def upload():
                 remove_temp(output_folder)
                 zip_folder(output_folder)
                 df_all_predicted.to_csv('tmp/report.csv')
+                yield "Progress:" + str(x) + '% <br>' + df_html + "<br><br>"
+                time.sleep(0.5)
                 yield '<script>document.location.href="sorted"</script>'
                 #with app.app_context():
                     #yield render_template('sorted.html', filenames=filenames, sorted_output = "sorted_output.zip", report_output = "report.csv")    	
