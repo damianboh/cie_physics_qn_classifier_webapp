@@ -1,47 +1,22 @@
 paper,question,predicted_topic,predicted_marks,start_page
-2006_11Nov_P2_9702_qp.pdf,1,A04 Work Energy Power,9,4
-2006_11Nov_P2_9702_qp.pdf,2,B02 Oscillations,9,6
-2006_11Nov_P2_9702_qp.pdf,3,D02 Nuclear Physics,10,8
-2006_11Nov_P2_9702_qp.pdf,4,B03 Wave and Superposition,10,10
-2006_11Nov_P2_9702_qp.pdf,5,D02 Nuclear Physics,8,12
-2006_11Nov_P2_9702_qp.pdf,6,C02 Current of Electricity and DC,8,13
-2006_11Nov_P2_9702_qp.pdf,7,C02 Current of Electricity and DC,6,14
-2006_06Jun_P2_9702_qp.pdf,1,A01 Measurement,7,4
-2006_06Jun_P2_9702_qp.pdf,2,A03 Forces,9,6
-2006_06Jun_P2_9702_qp.pdf,3,B01 Thermal Physics,8,8
-2006_06Jun_P2_9702_qp.pdf,4,A03 Forces,5,9
-2006_06Jun_P2_9702_qp.pdf,5,B02 Oscillations,8,10
-2006_06Jun_P2_9702_qp.pdf,6,B03 Wave and Superposition,7,12
-2006_06Jun_P2_9702_qp.pdf,7,C02 Current of Electricity and DC,10,14
-2006_06Jun_P2_9702_qp.pdf,8,D02 Nuclear Physics,6,16
-2005_11Nov_P2_9702_qp.pdf,1,A01 Measurement,5,4
-2005_11Nov_P2_9702_qp.pdf,2,A03 Forces,4,5
-2005_11Nov_P2_9702_qp.pdf,3,A05 Gravitational Field,7,6
-2005_11Nov_P2_9702_qp.pdf,4,B02 Oscillations,10,8
-2005_11Nov_P2_9702_qp.pdf,5,B03 Wave and Superposition,10,10
-2005_11Nov_P2_9702_qp.pdf,6,C01 Electric Field,7,12
-2005_11Nov_P2_9702_qp.pdf,7,C02 Current of Electricity and DC,9,14
-2005_11Nov_P2_9702_qp.pdf,8,A04 Work Energy Power,8,16
-2005_06Jun_P2_9702_qp.pdf,1,B01 Thermal Physics,4,4
-2005_06Jun_P2_9702_qp.pdf,2,D02 Nuclear Physics,4,5
-2005_06Jun_P2_9702_qp.pdf,3,A02 Kinematics and Dynamics,9,6
-2005_06Jun_P2_9702_qp.pdf,4,A02 Kinematics and Dynamics,11,8
-2005_06Jun_P2_9702_qp.pdf,5,B03 Wave and Superposition,9,10
-2005_06Jun_P2_9702_qp.pdf,6,C01 Electric Field,10,12
-2005_06Jun_P2_9702_qp.pdf,7,C02 Current of Electricity and DC,10,14
-2005_06Jun_P2_9702_qp.pdf,8,D02 Nuclear Physics,3,16
-2004_11Nov_P2_9702_qp.pdf,1,A01 Measurement,5,4
-2004_11Nov_P2_9702_qp.pdf,2,B03 Wave and Superposition,7,5
-2004_11Nov_P2_9702_qp.pdf,3,A02 Kinematics and Dynamics,14,6
-2004_11Nov_P2_9702_qp.pdf,4,B03 Wave and Superposition,6,9
-2004_11Nov_P2_9702_qp.pdf,5,A03 Forces,10,10
-2004_11Nov_P2_9702_qp.pdf,6,C02 Current of Electricity and DC,11,12
-2004_11Nov_P2_9702_qp.pdf,7,D02 Nuclear Physics,7,14
-2004_06Jun_P2_9702_qp.pdf,1,A03 Forces,6,4
-2004_06Jun_P2_9702_qp.pdf,2,B03 Wave and Superposition,5,5
-2004_06Jun_P2_9702_qp.pdf,3,A02 Kinematics and Dynamics,7,6
-2004_06Jun_P2_9702_qp.pdf,4,A02 Kinematics and Dynamics,12,8
-2004_06Jun_P2_9702_qp.pdf,5,A03 Forces,6,10
-2004_06Jun_P2_9702_qp.pdf,6,B03 Wave and Superposition,11,12
-2004_06Jun_P2_9702_qp.pdf,7,C02 Current of Electricity and DC,7,15
-2004_06Jun_P2_9702_qp.pdf,8,B01 Thermal Physics,6,16
+2016_06Jun_P21_9702_qp.pdf,1,A01 Measurement,7,4
+2016_06Jun_P21_9702_qp.pdf,2,A02 Kinematics and Dynamics,8,5
+2016_06Jun_P21_9702_qp.pdf,3,A02 Kinematics and Dynamics,8,6
+2016_06Jun_P21_9702_qp.pdf,4,A04 Work Energy Power,9,8
+2016_06Jun_P21_9702_qp.pdf,5,B03 Wave and Superposition,11,11
+2016_06Jun_P21_9702_qp.pdf,6,C02 Current of Electricity and DC,12,14
+2016_06Jun_P21_9702_qp.pdf,7,D02 Nuclear Physics,5,16
+2016_03Mar_P22_9702_qp.pdf,1,A01 Measurement,6,5
+2016_03Mar_P22_9702_qp.pdf,2,A02 Kinematics and Dynamics,13,6
+2016_03Mar_P22_9702_qp.pdf,3,A04 Work Energy Power,12,8
+2016_03Mar_P22_9702_qp.pdf,4,B03 Wave and Superposition,11,12
+2016_03Mar_P22_9702_qp.pdf,5,C02 Current of Electricity and DC,12,14
+2016_03Mar_P22_9702_qp.pdf,6,D02 Nuclear Physics,6,16
+2015_11Nov_P23_9702_qp.pdf,1,B03 Wave and Superposition,7,4
+2015_11Nov_P23_9702_qp.pdf,2,B03 Wave and Superposition,7,6
+2015_11Nov_P23_9702_qp.pdf,3,A02 Kinematics and Dynamics,13,8
+2015_11Nov_P23_9702_qp.pdf,4,A03 Forces,7,10
+2015_11Nov_P23_9702_qp.pdf,5,C02 Current of Electricity and DC,10,12
+2015_11Nov_P23_9702_qp.pdf,6,B03 Wave and Superposition,5,14
+2015_11Nov_P23_9702_qp.pdf,7,A03 Forces,5,15
+2015_11Nov_P23_9702_qp.pdf,8,D02 Nuclear Physics,6,16

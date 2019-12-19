@@ -32,6 +32,8 @@ app.config['UPLOAD_FOLDER'] = 'tmp/'
 # These are the extension that we are accepting to be uploaded
 app.config['ALLOWED_EXTENSIONS'] = set(['pdf'])
 
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 output_folder = "tmp/sorted_output"
 
 
@@ -313,8 +315,10 @@ filenames = []
 # Route that will process the file upload
 @app.route('/upload', methods=['POST'])
 def upload():   
-    if os.path.exists('tmp'):
-        shutil.rmtree('tmp')
+    if os.path.exists('tmp/sorted_output'):
+        try:
+            shutil.rmtree('tmp/sorted_output')
+        except Exception as e: print(e)
     if not os.path.exists('tmp'):
         os.makedirs('tmp')
     # Get the name of the uploaded files
@@ -392,7 +396,7 @@ def upload():
 
 @app.route('/sorted')
 def sorted():
-    return render_template('sorted.html', filenames=filenames, sorted_output = "sorted_output.zip", report_output = "report.csv")   
+    return render_template('sorted.html', filenames=filenames, sorted_output = secure_filename("sorted_output.zip?"), report_output = secure_filename("report.csv?"))   
 
 
 def stream_template(template_name, **context):
@@ -404,7 +408,15 @@ def stream_template(template_name, **context):
 #@app.route('/progress')
 #def progress():
 	
-
+@app.after_request
+def add_header(response):
+    """
+    Add headers to both force latest IE rendering engine or Chrome Frame,
+    and also to cache the rendered page for 10 minutes.
+    """
+    response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
+    response.headers['Cache-Control'] = 'public, max-age=0'
+    return response
 
 # This route is expecting a parameter containing the name
 # of a file. Then it will locate that file on the upload
@@ -412,13 +424,11 @@ def stream_template(template_name, **context):
 # an image, that image is going to be show after the upload
 @app.route('/tmp/<filename>')
 def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
+    return send_from_directory(app.config['UPLOAD_FOLDER'], 
                                filename)
 
-@app.route('/tmp/<filename>')
-def sorted_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+def download_file(filename):
+    return send_file(filename, as_attachment=True, cache_timeout=0)
 
 if __name__ == '__main__':
     app.run(
