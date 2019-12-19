@@ -366,7 +366,7 @@ def upload():
                     #headers = {'Content-Type': 'text/html'}
                     #yield make_response(render_template('index.html'), 200, headers)    	
            
-            else:
+            #else:
                 #yield render_template('index.html')
                 #yield "Progress:" + str(x) + '% <br>' + df_html + "<br><br>"
                 #yield "Progress:" + str(x) + "%: Working on " + file + "<br><br>"
