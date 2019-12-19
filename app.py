@@ -213,7 +213,8 @@ def add_question_to_pdf(readfile, page_list, writefile):
         merger.append(PdfFileReader(writefile + '.pdf'))
         merger.append(PdfFileReader(writefile + '_temporary.pdf'))
 
-        
+        os.remove(writefile + '.pdf')
+        print("pdf removed to replace with new pdf.")
         merger.write(writefile + '.pdf')
         merger.close()
 
