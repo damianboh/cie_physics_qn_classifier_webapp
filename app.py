@@ -358,7 +358,7 @@ def upload():
                 remove_temp(output_folder)
                 zip_folder(output_folder)
                 df_all_predicted.to_csv('tmp/report.csv')
-                yield "Progress:" + str(x) + '% <br>' + df_html + "<br><br>"
+                #yield "Progress:" + str(x) + '% <br>' + df_html + "<br><br>"
                 time.sleep(0.5)
                 yield '<script>document.location.href="sorted"</script>'
                 #with app.app_context():
@@ -369,7 +369,7 @@ def upload():
             else:
                 #yield render_template('index.html')
                 #yield "Progress:" + str(x) + '% <br>' + df_html + "<br><br>"
-                yield "Progress:" + str(x) + "%: Working on " + file + "<br><br>"
+                #yield "Progress:" + str(x) + "%: Working on " + file + "<br><br>"
                # yield "data:" + str(x) + "\n\n"
         
         
