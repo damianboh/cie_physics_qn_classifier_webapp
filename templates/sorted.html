@@ -18,15 +18,18 @@
 	  <hr/>
 	  <h4 class="text-muted">Download report (csv file): <a href="{{url_for('uploaded_file', filename=report_output)}}">report.csv</a></h4>
 	  <hr/>
+	  <!--
        <h5 class="text-muted">List of uploaded raw files:</h5>
       <ul>
         {% for file in filenames %}
           <li><a href="{{url_for('uploaded_file', filename=file)}}">{{file}}</a></li>
-		  <!--<li>{{file}}</li>-->
+		  <li>{{file}}</li>
         {% endfor %}
       </ul>
+	  <hr/>  
+	  -->
       </div>
-      <hr/>    
+        
 
       </div>
     </div>
