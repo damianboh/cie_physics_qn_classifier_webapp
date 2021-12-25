@@ -31,7 +31,7 @@ app = Flask(__name__, template_folder='templates')
 
 # This is the path to the upload directory
 #app.config['UPLOAD_FOLDER'] = 'tmp/'
-app.config['UPLOAD_FOLDER'] = '\tmp\'
+app.config['UPLOAD_FOLDER'] = '/tmp'
 
 # These are the extension that we are accepting to be uploaded
 app.config['ALLOWED_EXTENSIONS'] = set(['pdf'])
@@ -39,7 +39,7 @@ app.config['ALLOWED_EXTENSIONS'] = set(['pdf'])
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 #output_folder = "tmp/sorted_output"
-output_folder = "\tmp\sorted_output"
+output_folder = "/tmp/sorted_output"
 
 env = Environment(
     loader=FileSystemLoader('templates'),
