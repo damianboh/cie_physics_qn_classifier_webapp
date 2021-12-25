@@ -287,7 +287,7 @@ def remove_temp(output_folder):
 
 def zip_folder(output_folder):
     print("Zipping sorted files.")
-    filepath = 'tmp/sorted_output.zip'
+    filepath = '/tmp/sorted_output.zip'
     if os.path.exists(filepath):
         os.remove(filepath)        
     with ZipFile(filepath, 'w') as zipObj:
@@ -319,12 +319,12 @@ filenames = []
 # Route that will process the file upload
 @app.route('/upload', methods=['POST'])
 def upload():   
-    if os.path.exists('tmp/sorted_output'):
+    if os.path.exists('/tmp/sorted_output'):
         try:
-            shutil.rmtree('tmp/sorted_output')
+            shutil.rmtree('/tmp/sorted_output')
         except Exception as e: print(e)
-    if not os.path.exists('tmp'):
-        os.makedirs('tmp')
+    if not os.path.exists('/tmp'):
+        os.makedirs('/tmp')
     # Get the name of the uploaded files
     uploaded_files = request.files.getlist("file[]")
     global filenames
@@ -347,7 +347,7 @@ def upload():
     
     '''# for testing and debugging
     #html_string = pdf_to_html('D:/CIE_Machine_Learning/data/9702_backup_new_renamed/2007_11Nov_P2_9702_ms.pdf')
-    html_string = pdf_to_html('tmp/' + filenames[0])
+    html_string = pdf_to_html('/tmp/' + filenames[0])
     pages_text = get_pages(html_string)
     question_numbers_corrected = find_question_in_html(html_string)
     question_text_notags = get_question_texts(question_numbers_corrected, html_string)
@@ -361,7 +361,7 @@ def upload():
         df_all_predicted = pd.DataFrame()
         for file in filenames:
             count+=1
-            file = 'tmp/' + file            
+            file = '/tmp/' + file            
             df_temp = predict_by_question(file, output_folder)
             df = pd.DataFrame()
             df = pd.concat([df, df_temp])
@@ -374,7 +374,7 @@ def upload():
                 render_next = True
                 remove_temp(output_folder)
                 zip_folder(output_folder)
-                df_all_predicted.to_csv('tmp/report.csv')
+                df_all_predicted.to_csv('/tmp/report.csv')
                 yield "Progress:" + str(x) + '% <br>' + df_html + "<br><br>"
                 time.sleep(0.5)
                 yield '<script>document.location.href="sorted"</script>'
