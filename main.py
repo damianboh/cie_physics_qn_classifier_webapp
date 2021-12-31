@@ -20,9 +20,9 @@ import glob
 from zipfile import ZipFile
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory, send_file, Response, make_response, stream_with_context
-#from werkzeug import secure_filename
-from werkzeug.utils import secure_filename
-from werkzeug.datastructures import  FileStorage
+from werkzeug import secure_filename
+#from werkzeug.utils import secure_filename
+#from werkzeug.datastructures import  FileStorage
 import time
 import shutil
 
@@ -437,6 +437,6 @@ def download_file(filename):
 if __name__ == '__main__':
     app.run(
         host="0.0.0.0",
-        port=int("80"),
+        port=int("5000"),
         debug=True
     )
