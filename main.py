@@ -435,4 +435,4 @@ def download_file(filename):
     return send_file(filename, as_attachment=True, cache_timeout=0)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+    app.run(port=os.getenv("PORT", default=5000))
