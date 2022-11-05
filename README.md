@@ -1,6 +1,6 @@
 Webapp to classify A Level-style physics full papers into A Level H2 Physics topics. The app returns a zipped folder of separate pdf files of the sorted questions, one for each topic.
 
-This is a fun hobby project during my teaching days, which also saved my colleagues a great deal of time in sorting A Level physics questions into topics. It is a Python Flask webapp with trained AI model to classify H2 A Level physics questions into their respective topics.
+This is an initiative I took up during my teaching days, which also saved my colleagues a great deal of time in sorting A Level physics questions into topics. It is a Python Flask webapp with trained AI model to classify H2 A Level physics questions into their respective topics.
 
 Machine learning is trained separately in Python using many A Level tutorial physics questions from the school in which I taught (I cannot share the question papers here unfortunately). The classifier model is imported in the .pkl file. tfidf vectorizer used to vectorized the words is also imported in .pkl to vectorize the words from user input before classifying it.
 
